@@ -94,11 +94,10 @@ def parser_tsv(tsv):
     return df.iloc[:,1:4]
 
 
-all_types = []
 def choose_biotype_make_dict(df, biotype = 'protein_coding'):
 
     biotype = biotype
-    all_types.extend(list(df.biotype.unique()))
+    
     df = df[df['biotype'] == biotype]
     assert len(df.index) != 0
 
@@ -188,6 +187,5 @@ if __name__ =='__main__':
     data.columns = data.columns.map(meta_dict)
     data=rearrange_columns_of_matrix(data)
     data.index.name='id'
-    # print(data)
+
     data.to_csv(f'{biotype}_mRNAmatrix.txt')
-    print(set(all_types))
