@@ -97,8 +97,8 @@ def parser_tsv(tsv):
 def choose_biotype_make_dict(df, biotype = 'protein_coding'):
 
     biotype = biotype
-    
     df = df[df['biotype'] == biotype]
+   
     assert len(df.index) != 0
 
     genes, raw_data = df.gene, df.raw_data
@@ -148,7 +148,9 @@ def normal_sample_detector(df=None, columns=None, stat=True):
         pd.DataFrame([Counter(test_v)]).to_csv('report.csv')
         
     return test_v
-    # print(Counter(test_v))
+    print(Counter(test_v))
+    
+    
 @sep
 def rearrange_columns_of_matrix(matrix):
         temp_col = normal_sample_detector(df=matrix)
